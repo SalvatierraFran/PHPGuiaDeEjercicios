@@ -4,12 +4,29 @@
 </head>
 <body>
 
-	<table>
+	<table border="2">
 		<tr>
-			<td>Hola
-			<td>Hola
+			<td>Chau
+			<td>Chau
+			<td>Chau
 		</tr>
 		<tr>
+			<td>Chau
+			<td>Chau
+			<td>Chau
+		</tr>
+		<tr>
+			<td>Chau
+			<td>Chau
+			<td>Chau
+		</tr>
+		<tr>
+			<td>Chau
+			<td>Chau
+			<td>Chau
+		</tr>
+		<tr>
+			<td>Chau
 			<td>Chau
 			<td>Chau
 		</tr>
