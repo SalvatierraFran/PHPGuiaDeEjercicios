@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Aplicacion 09</title>
+
+	<script type="text/javascript" src="jquery.js"></script>
+
+	<script type="text/javascript">
+		
+		function Mostrar()
+		{
+			var Pagina = "traerAutos.php";
+
+			$.ajax({
+				type: 'POST',
+				url: Pagina,
+				dataType: 'JSON',
+				async: true,
+			})
+			.done(function (resultado){
+				alert("Entre");
+				var ObjJson = JSON.parse(resultado);
+				alert("LLego")
+				$("#divContenedor").html(objJson);
+			})
+			.fail(function (resultado){
+				alert("Error");
+			})
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<div>
+		<input type="submit" name="btnMostrar" value="Mostrar" onclick="Mostrar()">		
+	</div>
+	<div id="divContenedor"></div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8">
+	<title>Aplicacion 02 AJAX</title>
+
+	<script type="text/javascript">
+		
+		function Enviar()
+		{
+			var url = document.getElementById("url").value;
+
+			var PeticionHTTP = new XMLHttpRequest();
+
+			PeticionHTTP.open('GET', 'proceso.php?url='+url, true);
+			PeticionHTTP.send();
+
+			PeticionHTTP.onreadystatechange = function(){
+
+				if(PeticionHTTP.readyState == 4 && PeticionHTTP.status == 200)
+				{
+					if(PeticionHTTP.responseText != 0)
+					{
+						document.getElementById("contenido").value = PeticionHTTP.responseText;
+					}
+					else
+					{
+						alert("Archivo inexistente");
+					}
+				}
+			}
+		}
+
+
+		/*var PeticionHTTP;
+
+		function Peticion(metodo, url, funcion)
+		{
+			PeticionHTTP.onreadystatechange = funcion;
+			PeticionHTTP.open(metodo, url, true);
+			PeticionHTTP.send(null);
+		}
+
+		function descargarArchivo()
+		{
+			PeticionHTTP = new XMLHttpRequest();
+			Peticion('GET', 'MiTexto.txt', funcionFinal);
+		}
+
+		function funcionFinal()
+		{
+			alert('Actuando');
+			if(PeticionHTTP.readyState == 4)
+			{
+				if(PeticionHTTP.status == 200)
+				{
+					document.write( PeticionHTTP.responseText );
+				}
+			}
+		}
+
+		window.onload = descargarArchivo;*/
+
+	</script>
+
+</head>
+<body>
+
+	<input type="text" id="url">
+	<input type="submit" id="Enviar" onclick="Enviar()">
+	<br><br>
+	<textarea id="contenido"></textarea>
+	
+</body>
+</html>

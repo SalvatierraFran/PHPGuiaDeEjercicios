@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Aplicacion 3 Json</title>
+
+	<script src="jquery.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+
+		function enviarJson()
+		{
+			var Producto = [{"CodigoDeProducto" : 111111 , "Nombre" : "Pendrive" , "Precio" : 150}, 
+							{"CodigoDeProducto" : 222222, "Nombre" : "Computadora", "Precio" : 15000}, 
+							{"CodigoDeProducto" : 333333, "Nombre" : "Notebook", "Precio" : 10000}];
+							
+			var Pagina = "mostrarJson.php";
+
+			$.ajax({
+				type: 'POST',
+				url: Pagina,
+				dataType: "text",
+				data: {miProducto : Producto},
+				async: true
+			})
+			.done(function (resultado){
+				$("#divContenedor").html(resultado);
+			})
+			.fail(function (jqXHR, textStatus, errorThrown){
+				alert(jqXHR.responseText + "\n" + textStatus + "\n" + errorThrown);
+			});
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<input type="submit" value="Enviar" onclick="enviarJson()">
+	<div id="divContenedor"></div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Aplicacion 4 Json</title>
+
+	<script type="text/javascript" src="jquery.js"></script>
+
+	<script type="text/javascript">
+
+		function Recibir()
+		{
+			var Pagina = "recibirJson.php";
+
+			$.ajax({
+				type: 'POST',
+				url: Pagina,
+				dataType: "text",
+				async: true,
+			})
+			.done(function (resultado){
+				alert(resultado);
+				//alert(resultado.CodigoDeBarra);
+				var objJson = JSON.parse(resultado);
+				alert(objJson.CodigoDeBarra);
+			})
+			.fail(function (resultado){
+				alert(jqXHR.responseText + "\n" + textStatus + "\n" + errorThrown);
+			});
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<input type="submit" value="Enviar" onclick="Recibir()">
+	<div id="divContenedor"></div>
+
+</body>
+</html>

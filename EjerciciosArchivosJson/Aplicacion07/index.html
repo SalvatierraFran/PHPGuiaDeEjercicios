@@ -1,0 +1,38 @@
+<html>
+<head>
+
+	<script type="text/javascript" src="jquery.js"></script>
+
+	<script type="text/javascript">
+		
+		function TraerAuto()
+		{
+			var Pagina = "traerAuto.php";
+
+			$.ajax({
+				type: "POST",
+				url: Pagina,
+				dataType: "JSON",
+				async: true,
+			})
+			.done(function (resultado){
+				alert(resultado);
+				$("#divContenedor").html(resultado);
+			})
+			.fail(function (resultado){
+				alert("Error");
+			})
+		}
+
+	</script>
+
+</head>
+<body>
+	
+	<div>
+		<input type="submit" name="btnEnviar" value="Traer Auto" onclick="TraerAuto()">		
+	</div>
+	<div id="divContenedor"></div>
+
+</body>
+</html>

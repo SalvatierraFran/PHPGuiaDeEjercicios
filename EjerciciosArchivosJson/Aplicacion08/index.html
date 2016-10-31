@@ -1,0 +1,51 @@
+<html>
+<head>
+
+	<script type="text/javascript" src="jquery.js"></script>
+
+	<script type="text/javascript">
+		
+		function TraerAuto()
+		{
+			var Pagina = "traerAuto.php";
+
+			$.ajax({
+				type: "POST",
+				url: Pagina,
+				dataType: "JSON",
+				async: true,
+			})
+			.done(function (resultado){
+				//alert(resultado);
+				var ObjJason = JSON.parse(resultado);
+				//alert(ObjJason.Id);
+				//alert(ObjJason.Marca);
+				$("#txtID").val(ObjJason.Id);
+				$("#txtMarca").val(ObjJason.Marca);
+				$("#txtPrecio").val(ObjJason.Precio);
+				$("#txtColor").val(ObjJason.Color);
+				$("#txtModelo").val(ObjJason.Modelo);
+				//$("#divContenedor").html(resultado);
+			})
+			.fail(function (resultado){
+				alert("Error");
+			})
+		}
+
+	</script>
+
+</head>
+<body>
+	
+	<div>
+		<input type="submit" name="btnEnviar" value="Mostrar" onclick="TraerAuto()"><br><br>
+		ID: <input type="text" id="txtID"><br><br>
+		Marca: <input type="text" id="txtMarca"><br><br>
+		Precio: <input type="text" id="txtPrecio"><br><br>
+		Color: <input type="text" id="txtColor"><br><br>
+		Modelo: <input type="text" id="txtModelo"><br><br>		
+	</div>
+	<div id="divContenedor"></div>
+
+</body>
+</html>
